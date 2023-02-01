@@ -47,8 +47,20 @@ function downloadsvg() {
     });
 }
 
+async function toDataURL (url) {
+    const response = await fetch(url)
+    return new Promise(async (resolve, reject) => {
+        const reader = new FileReader()
+        reader.onloadend = () => resolve(reader.result)
+        reader.onerror = reject
+        reader.readAsDataURL(await response.blob())
+    })
+}
 /* Download the JSON */
-function download_json() {
+async function download_json() {
+    if (item.imageSource) {
+        item.imageBlob = await toDataURL(item.imageSource)
+    }
     const blob = new Blob([JSON.stringify(item)], { type: 'application/json' });
     readFile(blob).then(function (dataurl) {
         let a = document.createElement('a');

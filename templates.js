@@ -2,6 +2,7 @@
 
 const itemDefault = {
     name: '',
+    cardType: 'item',
     usage: 3,
     damage: '',
     armour: false,
@@ -104,6 +105,8 @@ const itemTemplates = {
     condition: {
         ...itemDefault,
         name: 'Injured',
+        cardType: 'condition',
+        usage: 0,
         mechanicDetail: 'Disadvantage on STR and DEX saves',
         detailSummary: 'Clear:',
         detailSpecifics: 'After full rest',
@@ -157,6 +160,8 @@ const itemTemplates = {
     irritated: {
         ...itemDefault,
         name: 'Irritated Injury',
+        cardType: 'condition',
+        usage: 0,
         mechanicDetail: 'Disadvantage on STR and DEX saves',
         detailSummary: 'Clear:',
         detailSpecifics: 'After two full rests',
